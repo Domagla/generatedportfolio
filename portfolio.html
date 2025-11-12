@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,94 +7,143 @@
   <link rel="stylesheet" href="style.css" />
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
+
 <body class="bg-stone-800 text-gray-100 font-sans">
 
-  <header class="bg-black">
-    <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col gap-4 text-center md:flex-row md:justify-between md:items-center md:text-left">
-      <h1 class="text-xl font-bold text-white">AD Engineering</h1>
-      <nav class="flex flex-wrap justify-center gap-4 md:justify-end" aria-label="Primary Navigation">
-        <a href="index.html" class="text-gray-300 hover:text-white">Home</a>
-        <a href="about.html" class="text-gray-300 hover:text-white">About</a>
-        <a href="portfolio.html" class="text-gray-300 hover:text-white">Portfolio</a>
-      </nav>
-    </div>
-  </header>
-
-  <main class="max-w-4xl mx-auto px-6 py-12 space-y-10">
-    <header class="bg-stone-800 space-y-4 text-center">
-      <p class="text-sm uppercase tracking-wide text-indigo-400">Showcase</p>
-      <h2 class="text-3xl font-semibold">A/B Audio Comparison</h2>
-      <p class="text-neutral-50 max-w-2xl mx-auto">
-        Toggle between raw and processed versions to hear how each mix evolves through the chain.
+  <nav
+    aria-label="Section navigation"
+    class="fixed top-32 left-4 z-50 max-h-[85vh] w-52 overflow-auto rounded-2xl bg-gray-500/60 p-3 shadow-xl backdrop-blur"
+    >
+      <p class="mb-2 px-2 text-xs font-semibold uppercase tracking-wide text-white">
+        Section Contents
       </p>
+      <ul id="toc" class="space-y-1">
+        <li><a href="#AudioAB"   class="toc-link block rounded-lg px-3 py-2 text-sm text-neutral-50 hover:bg-neutral-100">Mix Comparison</a></li>
+        <li><a href="#videodemo"    class="toc-link block rounded-lg px-3 py-2 text-sm text-neutral-50 hover:bg-neutral-100">Audio-Post</a></li>
+        <li><a href="#releasedmusic"    class="toc-link block rounded-lg px-3 py-2 text-sm text-neutral-50 hover:bg-neutral-100">Music Releases</a></li>
+      </ul>
+  </nav>
+  
+    <header class="bg-black">
+      <div class="max-w-6xl mx-auto px-4 py-6 flex flex-col gap-4 text-center md:flex-row md:justify-between md:items-center md:text-left">
+        <h1 class="text-xl font-bold text-white">AD Engineering</h1>
+        <nav class="flex flex-wrap justify-center gap-4 md:justify-end" aria-label="Primary Navigation">
+          <a href="index.html" class="text-gray-300 hover:text-white">Home</a>
+          <a href="about.html" class="text-gray-300 hover:text-white">About</a>
+          <a href="portfolio.html" class="text-gray-300 hover:text-white">Portfolio</a>
+        </nav>
+      </div>
     </header>
 
-    <section class="space-y-6">
-      <div class="bg-gray-500/60 border border-gray-800 rounded-2xl p-6 space-y-6">
-        <div class="flex flex-col gap-2">
-          <p class="text-sm uppercase tracking-wide text-gray-400">Mix 01</p>
-          <h3 class="text-2xl font-semibold">Clean vs Processed</h3>
-          <p class="text-gray-400">
-            A headroom-friendly mix that leans on analog glue for depth and width.
+    <main class="max-w-4xl mx-auto px-6 py-12 space-y-10">
+      <section id="AudioAB">
+        <header class="bg-stone-800 space-y-4 text-center">
+          <p class="text-sm uppercase tracking-wide text-indigo-400">Showcase</p>
+          <h2 class="text-3xl font-semibold">A/B Audio Comparison</h2>
+          <p class="text-neutral-50 max-w-2xl mx-auto">
+            Toggle between raw and processed versions to hear how each mix evolves through the chain.
           </p>
-        </div>
+        </header>
 
-        <div class="space-y-8">
-          <!--Sample 1-->
-          <article class="space-y-3 text-center">
-            <img
-              src="assets/audio/treatingtraumaimage.png"
-              alt="Living Centered Podcast cover"
-              class="mx-auto mb-4 w-32 h-32 object-cover rounded-lg"
-            />
-            <h4 class="text-lg font-semibold text-white">Treating Trauma Podcast</h4>
-            <div class="grid gap-6 md:grid-cols-2">
-              <div class="space-y-2">
-                <p class="text-sm text-gray-400">Version A – Clean</p>
-                <audio id="audioA1" class="w-full" src="assets/audio/jessie_murph_-_im_not_there_for_you_official_visualizer [vocals].wav" controls></audio>
-              </div>
-              <div class="space-y-2">
-                <p class="text-sm text-gray-400">Version B – Processed</p>
-                <audio id="audioB1" class="w-full" src="assets/audio/jessie_murph_-_im_not_there_for_you_official_visualizer [music].wav" controls></audio>
-              </div>
+        <section id="soundplayerbox" class="space-y-6">
+          <div class="bg-gray-500/60 border border-gray-800 rounded-2xl p-6 space-y-6">
+            <div class="flex flex-col gap-2">
+              <p class="text-sm uppercase tracking-wide text-gray-400">Mix 01</p>
+              <h3 class="text-2xl font-semibold">Clean vs Processed</h3>
+              <p class="text-gray-400">
+                A headroom-friendly mix that leans on analog glue for depth and width.
+              </p>
             </div>
-            <div class="flex flex-wrap gap-3 justify-center !mt-6">
-              <button class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition" onclick="toggleAB('1')">
-                Switch A/B
-              </button>
+
+            <div class="space-y-8">
+              <!--Sample 1-->
+              <article class="space-y-3 text-center">
+                <img
+                  src="assets/audio/treatingtraumaimage.png"
+                  alt="Living Centered Podcast cover"
+                  class="mx-auto mb-4 w-32 h-32 object-cover rounded-lg"
+                />
+                <h4 class="text-lg font-semibold text-white">Treating Trauma Podcast</h4>
+                <div class="grid gap-6 md:grid-cols-2">
+                  <div class="space-y-2">
+                    <p class="text-sm text-gray-400">Version A – Clean</p>
+                    <audio id="audioA1" class="w-full" src="assets/audio/jessie_murph_-_im_not_there_for_you_official_visualizer [vocals].wav" controls></audio>
+                  </div>
+                  <div class="space-y-2">
+                    <p class="text-sm text-gray-400">Version B – Processed</p>
+                    <audio id="audioB1" class="w-full" src="assets/audio/jessie_murph_-_im_not_there_for_you_official_visualizer [music].wav" controls></audio>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3 justify-center !mt-6">
+                  <button class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition" onclick="toggleAB('1')">
+                    Switch A/B
+                  </button>
+                </div>
+              </article>
+              <hr>
+              <!--Sample 2-->
+              <article class="space-y-3 text-center">
+                <img
+                  src="assets/audio/livingcenteredimage.jpeg"
+                  alt="Living Centered Podcast cover"
+                  class="mx-auto mb-4 w-32 h-32 object-cover rounded-lg"
+                />
+                <h4 class="text-lg font-semibold text-white">Living Centered Podcast</h4>
+                <div class="grid gap-6 md:grid-cols-2">
+                  <div class="space-y-2">
+                    <p class="text-sm text-gray-400">Version A – Clean</p>
+                    <audio id="audioA2" class="w-full" src="assets/audio/jessie_murph_-_im_not_there_for_you_official_visualizer [vocals].wav" controls></audio>
+                  </div>
+                  <div class="space-y-2">
+                    <p class="text-sm text-gray-400">Version B – Processed</p>
+                    <audio id="audioB2" class="w-full" src="assets/audio/jessie_murph_-_im_not_there_for_you_official_visualizer [music].wav" controls></audio>
+                  </div>
+                </div>
+                <div class="flex flex-wrap gap-3 justify-center !mt-6">
+                  <button class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition" onclick="toggleAB('2')">
+                    Switch A/B
+                  </button>
+                </div>
+              </article>
+              <hr>
+              <!--Sample 3-->
+              
             </div>
-          </article>
-          <hr>
-          <!--Sample 2-->
-          <article class="space-y-3 text-center">
-            <img
-              src="assets/audio/livingcenteredimage.jpeg"
-              alt="Living Centered Podcast cover"
-              class="mx-auto mb-4 w-32 h-32 object-cover rounded-lg"
-            />
-            <h4 class="text-lg font-semibold text-white">Living Centered Podcast</h4>
-            <div class="grid gap-6 md:grid-cols-2">
-              <div class="space-y-2">
-                <p class="text-sm text-gray-400">Version A – Clean</p>
-                <audio id="audioA2" class="w-full" src="assets/audio/jessie_murph_-_im_not_there_for_you_official_visualizer [vocals].wav" controls></audio>
-              </div>
-              <div class="space-y-2">
-                <p class="text-sm text-gray-400">Version B – Processed</p>
-                <audio id="audioB2" class="w-full" src="assets/audio/jessie_murph_-_im_not_there_for_you_official_visualizer [music].wav" controls></audio>
-              </div>
-            </div>
-            <div class="flex flex-wrap gap-3 justify-center !mt-6">
-              <button class="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition" onclick="toggleAB('2')">
-                Switch A/B
-              </button>
-            </div>
-          </article>
-          <hr>
-          <!--Sample 3-->
-          
+          </div>
+        </section>
+      </section>
+
+      <section id="videodemo" class="space-y-6">
+        <div class="bg-gray-500/60 border border-gray-800 rounded-2xl p-6 space-y-6">
+          <div class="flex flex-col gap-2">
+              <p class="text-sm uppercase tracking-wide text-gray-400">Section 2</p>
+              <h3 class="text-2xl font-semibold">Audio-Post Processing</h3>
+              <p class="text-gray-400">
+                A Collection of Student Projects and Videos I Have Mixed Sound For
+              </p>
+          </div>
+          <div id="embedJason" class="flex flex-wrap gap-3 justify-center !mt-6">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/IMrlenVkm1Y?si=nPB5kJWWXfWP3jKo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          </div>
         </div>
-      </div>
-    </section>
+        
+      </section>
+
+      <section id="releasedmusic" class="space-y-6">
+        <div class="bg-gray-500/60 border border-gray-800 rounded-2xl p-6 space-y-6">
+          <div class="flex flex-col gap-2">
+              <p class="text-sm uppercase tracking-wide text-gray-400">Section 3</p>
+              <h3 class="text-2xl font-semibold">Personal Music Releases</h3>
+              <p class="text-gray-400">
+                A Collection of Songs That I Have Independently Released
+              </p>
+          </div>
+          <div id="embedCMP" class="flex flex-wrap gap-3 justify-center !mt-6">
+          <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/4zB1lbHEYs8RCLAjPZVTgu?utm_source=generator&theme=0" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+        </div>
+        
+      </section>
   </main>
 
   <footer class="bg-black text-center text-gray-400 py-4">
