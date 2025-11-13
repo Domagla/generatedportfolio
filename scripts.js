@@ -43,8 +43,10 @@ function toggleAB(id) {
 
 // Smooth-scroll offset is handled by Tailwind's scroll-mt-* classes above.
     // This script highlights the active link as you scroll.
-    const sections = [...document.querySelectorAll('section[id]')];
     const links = [...document.querySelectorAll('.toc-link')];
+    const sections = links
+      .map(link => document.querySelector(link.getAttribute('href')))
+      .filter(Boolean);
     const linkById = Object.fromEntries(
       links.map(a => [a.getAttribute('href').slice(1), a])
     );
@@ -54,30 +56,34 @@ function toggleAB(id) {
       links.forEach(a => {
         a.classList.remove(
           'bg-neutral-900','text-white','font-medium','shadow',
-          'ring-1','ring-neutral-200'
+          //'ring-1','ring-neutral-200'
         );
-        a.classList.add('text-neutral-50');
+        a.classList.add('text-neutral-200');
       });
       const active = linkById[id];
       if (active) {
         active.classList.remove('text-neutral-700');
         active.classList.add(
-          'bg-neutral-900','text-white','font-medium','shadow','ring-1','ring-neutral-200'
+          'bg-neutral-900','text-white','font-medium','shadow',//'ring-1','ring-neutral-200'
         );
       }
     }
 
     // Observe which section is in view
     const observer = new IntersectionObserver((entries) => {
-      // pick the entry closest to the top and intersecting
       const visible = entries
         .filter(e => e.isIntersecting)
-        .sort((a,b) => a.boundingClientRect.top - b.boundingClientRect.top)[0];
+        .sort((a, b) => {
+          if (a.intersectionRatio !== b.intersectionRatio) {
+            return b.intersectionRatio - a.intersectionRatio;
+          }
+          return a.boundingClientRect.top - b.boundingClientRect.top;
+        })[0];
       if (visible) setActive(visible.target.id);
     }, {
       root: null,
-      rootMargin: '0px 0px -60% 0px', // trigger when the top 40% of viewport
-      threshold: [0, 0.25, 0.5, 1]
+      rootMargin: '0px 0px -60% 0px', // react as soon as section enters upper half
+      threshold: [0.15, 0.4, 0.75, 1]
     });
 
     sections.forEach(sec => observer.observe(sec));
@@ -85,6 +91,8 @@ function toggleAB(id) {
     // Optional: close keyboard focus loop on click (keeps focus styles tidy)
     links.forEach(a => {
       a.addEventListener('click', () => {
+        const targetId = a.getAttribute('href').slice(1);
+        setActive(targetId);
         // small timeout so scrolling happens first
         setTimeout(() => a.blur(), 300);
       });

@@ -110,3 +110,86 @@ html, body {
       padding: 1.25rem 0.75rem;
     }
   }
+
+  /* Portfolio page responsive tweaks */
+  .portfolio-page {
+    scroll-padding-top: 5rem;
+  }
+
+  .portfolio-page .portfolio-shell {
+    width: 100%;
+  }
+
+  .portfolio-page .section-guide {
+    position: sticky;
+    top: 1rem;
+    margin: 1rem auto 1.5rem;
+    width: min(100%, 28rem);
+  }
+
+  .portfolio-page .section-guide ul {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+  }
+
+  .portfolio-page .section-guide ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .portfolio-page .section-guide li {
+    flex: 1;
+    min-width: fit-content;
+  }
+
+  .portfolio-page .section-guide a {
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 640px) {
+    .portfolio-page .section-guide {
+      border-radius: 9999px;
+      padding: 0.5rem 0.75rem;
+    }
+
+    .portfolio-page .section-guide a {
+      font-size: 0.85rem;
+      padding: 0.4rem 0.6rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .portfolio-page .section-guide {
+      width: min(100%, 34rem);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .portfolio-page .portfolio-shell {
+      align-items: start;
+    }
+
+    .portfolio-page .section-guide {
+      margin: 0;
+      top: 8rem;
+      width: auto;
+    }
+
+    .portfolio-page .section-guide ul {
+      display: block;
+      overflow: visible;
+    }
+
+    .portfolio-page .section-guide li {
+      flex: none;
+      min-width: 0;
+    }
+
+    .portfolio-page .section-guide a {
+      text-align: left;
+      white-space: normal;
+    }
+  }
